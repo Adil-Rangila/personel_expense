@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  String inputAmount, inputTitle;
+
   final List<Transaction> transaction = [
     Transaction(
       id: 't1',
@@ -49,13 +51,18 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   TextField(
                     decoration: InputDecoration(labelText: 'Title'),
+                    onChanged: (value) => inputTitle = value,
                   ),
                   TextField(
                     decoration: InputDecoration(labelText: 'Amount'),
+                    onChanged: (value) => inputAmount = value,
                   ),
                   FlatButton(
                     textColor: Colors.purple,
-                    onPressed: () {},
+                    onPressed: () {
+                      print(inputTitle);
+                      print(inputAmount);
+                    },
                     child: Text('Add Transaction'),
                   ),
                 ],
