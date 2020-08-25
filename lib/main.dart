@@ -39,50 +39,76 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        children: transaction.map((e) {
-          return Card(
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 10.0,
+        children: [
+          Card(
+            elevation: 5.0,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
                   ),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.purple, width: 2.0),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
                   ),
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    'Rs. ${e.amount.toString()}',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Colors.purple),
+                  FlatButton(
+                    textColor: Colors.purple,
+                    onPressed: () {},
+                    child: Text('Add Transaction'),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                ],
+              ),
+            ),
+          ),
+          Column(
+            children: transaction.map((e) {
+              return Card(
+                child: Row(
                   children: [
-                    Text(
-                      e.title,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10.0,
+                        horizontal: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple, width: 2.0),
+                      ),
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Rs. ${e.amount.toString()}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.purple),
                       ),
                     ),
-                    Text(
-                      DateFormat().add_MMMEd().format(e.date),
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          e.title,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          DateFormat().add_MMMEd().format(e.date),
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
-          );
-        }).toList(),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }
